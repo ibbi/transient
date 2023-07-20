@@ -7,6 +7,7 @@ import {
 } from "@gorhom/bottom-sheet";
 
 import TappableCity from "./TappableCity";
+import { City } from "../types";
 
 const selfLocationStrings = [
   "You've never been!",
@@ -15,7 +16,7 @@ const selfLocationStrings = [
   "You're here!",
 ];
 
-let cities = [
+let cities: City[] = [
   { id: "1", name: "New York" },
   { id: "2", name: "Los Angeles" },
   { id: "3", name: "Chicago" },
@@ -41,8 +42,8 @@ let cities = [
 }));
 
 const CitiesView = () => {
-  const [selectedCity, setSelectedCity] = useState(null);
-  const bottomSheetModalRef = useRef(null);
+  const [selectedCity, setSelectedCity] = useState<City | null>(null);
+  const bottomSheetModalRef = useRef<BottomSheetModal>(null);
   const snapPoints = useMemo(() => ["50%", "75%"], []);
 
   const handlePresentModalPress = useCallback((city) => {
@@ -71,7 +72,7 @@ const CitiesView = () => {
               <>
                 <Image
                   source={{ uri: selectedCity.image }}
-                  style={{ width: 80, height: 80 }}
+                  style={{ width: 400, height: 300 }}
                 />
                 <Text>{selectedCity.name}</Text>
                 <Text>{selectedCity.selfLocation}</Text>

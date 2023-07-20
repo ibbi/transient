@@ -1,8 +1,15 @@
 import React from "react";
-import { StyleSheet, Text, TouchableOpacity, Image, View } from "react-native";
+import { Text, TouchableOpacity, Image, View } from "react-native";
 import tw from "twrnc";
 
-const TappableCity = ({ item, onSelect }) => (
+import { City } from "../types";
+
+interface TappableCityProps {
+  item: City;
+  onSelect: (city: City) => void;
+}
+
+const TappableCity: React.FC<TappableCityProps> = ({ item, onSelect }) => (
   <TouchableOpacity
     style={tw`flex flex-row items-center justify-between border-b border-gray-300`}
     onPress={() => onSelect(item)}
