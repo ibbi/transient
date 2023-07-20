@@ -3,6 +3,9 @@ import React, { useState, useEffect } from "react";
 import { SafeAreaView, SafeAreaProvider } from "react-native-safe-area-context";
 import { StatusBar } from "expo-status-bar";
 import { Session } from "@supabase/supabase-js";
+
+import { GluestackUIProvider } from "./components/core";
+import { config } from "./gluestack-ui.config";
 import { supabase } from "./lib/supabase";
 import Auth from "./components/Auth";
 import Account from "./components/Account";
@@ -21,15 +24,17 @@ export default function App() {
   }, []);
 
   return (
-    <SafeAreaProvider>
-      <SafeAreaView>
-        {session && session.user ? (
-          <Account key={session.user.id} session={session} />
-        ) : (
-          <Auth />
-        )}
-        <StatusBar style="auto" />
-      </SafeAreaView>
-    </SafeAreaProvider>
+    <GluestackUIProvider config={config.theme}>
+      <SafeAreaProvider>
+        <SafeAreaView>
+          {session && session.user ? (
+            <Account key={session.user.id} session={session} />
+          ) : (
+            <Auth />
+          )}
+          <StatusBar style="auto" />
+        </SafeAreaView>
+      </SafeAreaProvider>
+    </GluestackUIProvider>
   );
 }

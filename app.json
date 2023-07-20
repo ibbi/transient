@@ -4,6 +4,7 @@
     "slug": "transient",
     "version": "1.0.0",
     "orientation": "portrait",
+    "scheme": "transient",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
@@ -11,9 +12,7 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.ibbi.transient"
@@ -26,12 +25,14 @@
       "package": "com.ibbi.transient"
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/favicon.png",
+      "bundler": "metro"
     },
     "extra": {
       "eas": {
         "projectId": "2e52026c-a28b-4b93-9f44-d7134060e408"
       }
-    }
+    },
+    "plugins": ["expo-router"]
   }
 }

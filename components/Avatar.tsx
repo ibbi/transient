@@ -50,23 +50,25 @@ export default function Avatar({ url, size = 150, onUpload }: Props) {
         copyToCacheDirectory: true,
       });
 
-      if (file.type === "cancel") {
+      if (file.canceled) {
         console.warn("cancelled");
         setUploading(false);
         return;
       }
 
+      const fileAsset = file.assets !== null ? file.assets[0] : null;
+
       const photo = {
-        uri: file.uri,
-        type: file.mimeType,
-        name: file.name,
+        uri: fileAsset?.uri,
+        type: fileAsset?.mimeType,
+        name: fileAsset?.name,
       };
 
       const formData = new FormData();
       // @ts-ignore
       formData.append("file", photo);
 
-      const filePath = `${Math.random()}.${file.name.split(".").pop()}`;
+      const filePath = `${Math.random()}.${fileAsset?.name.split(".").pop()}`;
 
       let { error } = await supabase.storage
         .from("avatars")
