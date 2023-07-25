@@ -43,7 +43,10 @@
     "@expo/html-elements": "latest",
     "@gluestack-ui/input": "latest",
     "@gluestack-ui/link": "latest",
-    "@gluestack-ui/vstack": "latest"
+    "@gluestack-ui/vstack": "latest",
+    "@gluestack-ui/divider": "latest",
+    "@gluestack-ui/pressable": "latest",
+    "@gluestack-ui/hstack": "latest"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",

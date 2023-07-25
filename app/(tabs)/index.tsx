@@ -1,38 +1,52 @@
-import { StyleSheet } from "react-native";
+import { FlatList } from "react-native";
+import { Box, Heading } from "@/components";
+import TappableCity from "@/components/TappableCity";
 
-import EditScreenInfo from "@/components/EditScreenInfo";
-import { Text, View } from "@/components/Themed";
-import { useAuth } from "@/app/context/auth-supabase";
+import { City } from "@/types";
 
-export default function TabOneScreen() {
-  const { signOut, user } = useAuth();
+const selfLocationStrings = [
+  "You've never been!",
+  "Last here Aug 15, '20",
+  "Next here Jan 15, '24",
+  "You're here!",
+];
+
+let cities: City[] = [
+  { id: "1", name: "New York" },
+  { id: "2", name: "Los Angeles" },
+  { id: "3", name: "Chicago" },
+  { id: "4", name: "Houston" },
+  { id: "5", name: "Phoenix" },
+  { id: "6", name: "Philadelphia" },
+  { id: "7", name: "San Antonio" },
+  { id: "8", name: "San Diego" },
+  { id: "9", name: "Dallas" },
+  { id: "10", name: "San Jose" },
+  { id: "11", name: "Austin" },
+  { id: "12", name: "Jacksonville" },
+  { id: "13", name: "Fort Worth" },
+  // Add more cities as needed
+].map((city) => ({
+  ...city,
+  image: "https://placekitten.com/640/360",
+  selfLocation:
+    selfLocationStrings[Math.floor(Math.random() * selfLocationStrings.length)],
+  here: Math.floor(Math.random() * 20),
+  going: Math.floor(Math.random() * 20),
+  based: Math.floor(Math.random() * 20),
+}));
+
+export default function Cities() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Tab One</Text>
-      <View
-        style={styles.separator}
-        lightColor="#eee"
-        darkColor="rgba(255,255,255,0.1)"
+    <Box p="$8">
+      <Heading>Cities</Heading>
+      <FlatList
+        data={cities}
+        renderItem={({ item }) => (
+          <TappableCity item={item} cityID={item.name} />
+        )}
+        keyExtractor={(item) => item.id}
       />
-      <EditScreenInfo path="app/(tabs)/index.tsx" />
-      <Text onPress={() => signOut()}>Sign Out - {user?.email}</Text>
-    </View>
+    </Box>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: "bold",
-  },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: "80%",
-  },
-});
