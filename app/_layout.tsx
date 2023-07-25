@@ -8,7 +8,10 @@ import { useFonts } from "expo-font";
 import { SplashScreen, Stack } from "expo-router";
 import { useEffect } from "react";
 import { useColorScheme } from "react-native";
+
 import { Provider, useAuth } from "@/app/context/auth-supabase";
+import { GluestackUIProvider } from "@/components";
+import { config } from "@/gluestack-ui.config";
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -45,9 +48,11 @@ export default function RootLayout() {
   }
 
   return (
-    <Provider>
-      <RootLayoutNav />
-    </Provider>
+    <GluestackUIProvider config={config.theme}>
+      <Provider>
+        <RootLayoutNav />
+      </Provider>
+    </GluestackUIProvider>
   );
 }
 

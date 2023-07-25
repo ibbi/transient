@@ -4,6 +4,7 @@ import {
   StyleSheet,
   TextInput,
   TouchableOpacity,
+  KeyboardAvoidingView,
 } from "react-native";
 import { useAuth } from "@/app/context/auth-supabase";
 import { Stack, useRouter } from "expo-router";
@@ -20,9 +21,11 @@ export default function SignUp() {
   return (
     <>
       <Stack.Screen options={{ title: "sign up", headerShown: false }} />
-      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+      <KeyboardAvoidingView
+        style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
+      >
         <View>
-          <Text style={styles.label}>UserName</Text>
+          <Text style={styles.label}>Username</Text>
           <TextInput
             placeholder="Username"
             autoCapitalize="none"
@@ -85,7 +88,7 @@ export default function SignUp() {
             Click Here To Return To Sign In Page
           </Text>
         </View>
-      </View>
+      </KeyboardAvoidingView>
     </>
   );
 }
