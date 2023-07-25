@@ -42,7 +42,8 @@
     "@gluestack-ui/form-control": "latest",
     "@expo/html-elements": "latest",
     "@gluestack-ui/input": "latest",
-    "@gluestack-ui/link": "latest"
+    "@gluestack-ui/link": "latest",
+    "@gluestack-ui/vstack": "latest"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",

@@ -73,7 +73,7 @@ export function Provider(props: ProviderProps) {
         !inAuthGroup
       ) {
         // Redirect to the sign-in page.
-        router.push("/sign-in");
+        router.replace("/sign-in");
       } else if (user && inAuthGroup) {
         // Redirect away from the sign-in page.
         router.push("/");
