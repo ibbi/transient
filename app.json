@@ -16,7 +16,8 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.ibbi.transient"
     },
     "android": {
       "adaptiveIcon": {
@@ -35,6 +36,14 @@
     "experiments": {
       "tsconfigPaths": true,
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "2e52026c-a28b-4b93-9f44-d7134060e408"
+      }
     }
   }
 }
