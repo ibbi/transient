@@ -1,8 +1,10 @@
+import { useEffect, useState } from "react";
 import { FlatList } from "react-native";
 import { Box, Heading } from "@/components";
 import TappableCity from "@/components/TappableCity";
 
 import { City } from "@/types";
+import { getCityList } from "@/api";
 
 const selfLocationStrings = [
   "You've never been!",
@@ -32,14 +34,24 @@ let cities: City[] = [
   selfLocation:
     selfLocationStrings[Math.floor(Math.random() * selfLocationStrings.length)],
   here: Math.floor(Math.random() * 20),
-  going: Math.floor(Math.random() * 20),
+  going: Math.floor(Math.random() * 2),
   based: Math.floor(Math.random() * 20),
 }));
 
 export default function Cities() {
+  const [cities, setCities] = useState<any>([]);
+
+  useEffect(() => {
+    const fetchCities = async () => {
+      const cityList = await getCityList();
+      setCities(cityList);
+    };
+    fetchCities();
+  }, []);
+
   return (
-    <Box p="$8">
-      <Heading>Cities</Heading>
+    <Box p="$8" style={{ flex: 1 }}>
+      <Heading size="2xl">Cities</Heading>
       <FlatList
         data={cities}
         renderItem={({ item }) => (

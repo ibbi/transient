@@ -1,3 +1,4 @@
+export * from './Actionsheet';
 export * from './Box';
 export * from './Button';
 export * from './Divider';
@@ -9,6 +10,7 @@ export * from './Image';
 export * from './Input';
 export * from './Link';
 export * from './Pressable';
+export * from './Select';
 export * from './Text';
 export * from './Vstack';
 export * from './styled';
